@@ -2,8 +2,12 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var currentDayEl = $('#currentDay');
+var currentWorkdayEl = $('#workday');
 
-currentDayEl.text("todays day");
+currentWorkdayEl.text("Workday starts from 10am to 10pm everyday");
+
+var currentDate;
+
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -23,5 +27,10 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
+  currentDate = setInterval(()=>{
+    var today = dayjs();
+    currentDayEl.text(today.format("dddd MMM D, YYYY"));
+  },1000)
+
+
 });
