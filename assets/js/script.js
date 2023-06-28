@@ -49,8 +49,12 @@ $(function () {
     var time = index;
     if (time < 12) {
       return (`${time} AM`);
-    } else {
+    } else if(time ==12){
       return (`${time} PM`);
+    } else{
+      time = time - 12;
+      return (`${time} PM`);
+      
     }
   };
 
