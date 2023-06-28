@@ -19,7 +19,7 @@ $(function () {
 
     var parentDivEl = $("<div>").attr('id', `hour-${index}`);
     parentDivEl.addClass("row time-block");
-    parentDivEl.addClass(timeCheck(index));
+    parentDivEl.addClass(timeCheck(index));//adds PM or AM
     containerLargeEl.append(parentDivEl);
 
     var saveButtonEl = $("<button>").attr('id', `${index}`);
@@ -58,7 +58,7 @@ $(function () {
     }
   };
 
-  //check for the time of the date and add a class
+  //check for the time of the date
   function timeCheck(index) {
     var currentHour = dayjs().format("H");
     if (currentHour == index) {
