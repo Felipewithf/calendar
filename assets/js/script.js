@@ -20,7 +20,8 @@ $(function () {
   for (let index = 9; index < 18; index++) {
 
     var parentDivEl =  $("<div>").attr('id',index);
-    parentDivEl.addClass("row time-block present");
+    parentDivEl.addClass("row time-block");
+    parentDivEl.addClass(timeCheck(index));
     containerLargeEl.append(parentDivEl);
   
     var saveButtonEl = $("<button>");
@@ -29,7 +30,7 @@ $(function () {
     var textareaEl = $("<textarea>");
     textareaEl.addClass("col-8 col-md-10 description");
 
-    var childDivEl = $("<div>").text(index);
+    var childDivEl = $("<div>").text(timeInPmOrAm(index));
     childDivEl.addClass("col-2 col-md-1 hour text-center py-3");
 
     parentDivEl.append(childDivEl,textareaEl,saveButtonEl);
@@ -38,8 +39,34 @@ $(function () {
     saveIconEl.addClass("fas fa-save");
     saveButtonEl.append(saveIconEl);
 
-
     
+    
+  };
+
+  //return time in PM or AM
+  function timeInPmOrAm(index){
+    var time = index;
+    if(time < 12){
+      return ( `${time} AM`);
+    }else{
+      return ( `${time} PM`);
+    }
+  };
+
+  //check for the time of the date and add a class
+  function timeCheck(index){
+      var currentHour = dayjs().format("H");
+      if(currentHour == index){
+        console.log("present");
+        return ("present");
+      }else if(currentHour > index){
+        console.log("past");
+        return ("past");
+      }else{
+        console.log("future");
+        return ("future");
+      }
+
   };
 
   // TODO: Add a listener for click events on the save button. This code should
