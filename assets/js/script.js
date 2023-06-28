@@ -3,13 +3,45 @@
 // in the html.
 var currentDayEl = $('#currentDay');
 var currentWorkdayEl = $('#workday');
+var containerLargeEl = $('.container-lg');
 
-currentWorkdayEl.text("Workday starts from 10am to 10pm everyday");
+currentWorkdayEl.text("Workday starts from 9am to 5pm everyday");
 
 var currentDate;
 
 
 $(function () {
+
+  function saveOnLocal() {
+    console.log("we got it");
+  };
+
+  //loop to make the time blocks, add ids and classes
+  for (let index = 9; index < 18; index++) {
+
+    var parentDivEl =  $("<div>").attr('id',index);
+    parentDivEl.addClass("row time-block present");
+    containerLargeEl.append(parentDivEl);
+  
+    var saveButtonEl = $("<button>");
+    saveButtonEl.addClass("btn saveBtn col-2 col-md-1");
+
+    var textareaEl = $("<textarea>");
+    textareaEl.addClass("col-8 col-md-10 description");
+
+    var childDivEl = $("<div>").text(index);
+    childDivEl.addClass("col-2 col-md-1 hour text-center py-3");
+
+    parentDivEl.append(childDivEl,textareaEl,saveButtonEl);
+
+    var saveIconEl = $("<i>");
+    saveIconEl.addClass("fas fa-save");
+    saveButtonEl.append(saveIconEl);
+
+
+    
+  };
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -27,10 +59,14 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+
+  //interval to check for current date and time
   currentDate = setInterval(()=>{
     var today = dayjs();
     currentDayEl.text(today.format("dddd MMM D, YYYY"));
   },1000)
 
+// event listners go here
+  $("body").on("click",".saveBtn",saveOnLocal);
 
 });
