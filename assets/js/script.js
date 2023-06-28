@@ -5,7 +5,6 @@ var containerLargeEl = $('.container-lg');
 
 var currentDate;
 
-
 $(function () {
 
   //interval to check for current date and time
@@ -59,16 +58,12 @@ $(function () {
   function timeCheck(index) {
     var currentHour = dayjs().format("H");
     if (currentHour == index) {
-      console.log("present");
       return ("present");
     } else if (currentHour > index) {
-      console.log("past");
       return ("past");
     } else {
-      console.log("future");
       return ("future");
     }
-
   };
 
   //store the value on localStorage
