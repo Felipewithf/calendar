@@ -16,7 +16,6 @@ You can view the live demo using this link https://felipewithf.github.io/calenda
 
  ![App on load, a blocktime for hours 9am to 5pm](assets/img/s1.png)
   ![creating of events in each timeblock](assets/img/s2.png)
-   ![Clear all events after clear button is pressed](assets/img/s3.png)
 
 ## Tests
 
@@ -25,6 +24,6 @@ You can view the live demo using this link https://felipewithf.github.io/calenda
 - Refresh the page to view all saved entries
 - clear all entries with the button below, then test by refreshing the page, no entries should be displayed
 
-## time estimates
+## time estimate
 
 4 hours
